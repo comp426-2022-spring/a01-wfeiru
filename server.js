@@ -28,15 +28,14 @@ const port = args.port || process.env.PORT || 3000
 // 1. status code 200, 
 // 2. set a header with content type `text/html`, and 
 // 3. end with the data that you are reading in from ./www/index.html.
-
-
-
-
-
+const server = http.createServer((req, res) => {
+    res.statusCode = 200
+    res.setHeader('Content-Type', 'text/html')
+    res.end('<h1>Hello,World!</h1>')
+})
 // Start the `server` const listening on the port defined by argument in your `port` const. 
 // Put the exact message `Server listening on port ${port}` on the console log. 
-
-
-
-
+server.listen(port, () => {
+    console.log(`Server listening on port ${port}`)
+})
 // That's it! You're all done!
